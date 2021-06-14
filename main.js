@@ -94,16 +94,11 @@ while(bool == true){
             console.log("~ Completing a to-do item ~")
             console.log("Which to-do item would you like to complete?")
             let option = Number(prompt(">"))
-            while(isNaN(option)){
+            while(isNaN(option) || option > arrList.length){
                 console.log("**select a valid option**")
                 option = Number(prompt(">"))
             }
-            if(option > arrList.length){
-                console.log("**select a valid option**")
-            }
-            else{
-                arrList = arrMod(option, arrList)
-            }
+            arrList = arrMod(option, arrList)
             console.log("")
         }
     }
@@ -111,16 +106,11 @@ while(bool == true){
         if(arrList.length>0){
             console.log("Select an item to edit")
             let option = Number(prompt(">"))
-            while(isNaN(option)){
+            while(isNaN(option) || option > arrList.length){
                 console.log("**select a valid option**")
                 option = Number(prompt(">"))
             }
-            if(option > arrList.length){
-                console.log("**select a valid option**")
-            }
-            else{
-                arrList = edit(option,arrList)
-            }
+            arrList = edit(option,arrList)
         }
         else{
             console.log(" To-do list is empty.")
@@ -130,20 +120,16 @@ while(bool == true){
         if(arrList.length>0){
             console.log("Select an item to delete")
             let option = Number(prompt(">"))
-            while(isNaN(option)){
+            while(isNaN(option) || option > arrList.length){
+                console.log("**select a valid option**")
                 option = Number(prompt(">"))
             }
-                if(option > arrList.length){
-                    console.log("**select a valid option**")
-                }
-                else{
-                    arrList = wipe(option,arrList)
-                    
-                }
-            }
+            arrList = wipe(option,arrList)
+        }
         else{
             console.log(" To-do list is empty.")
         }
+        count--
     }
     else{
         console.log("select a valid option")
