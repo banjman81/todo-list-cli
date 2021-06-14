@@ -21,8 +21,9 @@ while(bool == true){
     console.log("~Select an action~")
     console.log("[1] Create a to-do list")
     console.log("[2] Complete a to-do list")
-    console.log("[3] Edit a to-do list")
-    console.log("[4] Delete a to-do list")
+    console.log("[3] Uncomplete a to-do list")
+    console.log("[4] Edit a to-do list")
+    console.log("[5] Delete a to-do list")
     const select = Number(prompt(">"))
 
 
@@ -78,6 +79,13 @@ while(bool == true){
         arr.splice(n-1,1)
         return arr
     }
+    function unMod(n, arr){
+        const selected = arr[n-1]
+        const text = selected+1
+            arr.splice(n-1,1, text)
+            return arr
+        
+    }
     // function ends
 
 
@@ -102,9 +110,23 @@ while(bool == true){
             console.log("")
         }
     }
-    else if(select == 3){
+    else if(select === 3){
         if(arrList.length>0){
-            console.log("Select an item to edit")
+            console.log("~ Unompleting a to-do item ~")
+            console.log("Which to-do item would you like to uncomplete?")
+            let option = Number(prompt(">"))
+            while(isNaN(option) || option > arrList.length){
+                console.log("**select a valid option**")
+                option = Number(prompt(">"))
+            }
+            arrList = unMod(option, arrList)
+            console.log("")
+        }
+    }
+    else if(select == 4){
+        if(arrList.length>0){
+            console.log("~ Editing a to-do item ~")
+            console.log("Which to-do item would you like to edit?")
             let option = Number(prompt(">"))
             while(isNaN(option) || option > arrList.length){
                 console.log("**select a valid option**")
@@ -116,9 +138,10 @@ while(bool == true){
             console.log(" To-do list is empty.")
         }
     }
-    else if(select == 4){
+    else if(select == 5){
         if(arrList.length>0){
-            console.log("Select an item to delete")
+            console.log("~ Deleting a to-do item ~")
+            console.log("Which to-do item would you like to delete?")
             let option = Number(prompt(">"))
             while(isNaN(option) || option > arrList.length){
                 console.log("**select a valid option**")
