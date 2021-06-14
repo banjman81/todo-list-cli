@@ -7,6 +7,7 @@ let count = 0;
 const bool = true;
 let arrList =[]
 while(bool == true){
+    console.log("")
     if (count === 0){
         console.log('Your to-do list is empty.')
         console.log(" ")
@@ -21,6 +22,10 @@ while(bool == true){
     console.log("[2] Complete a to-do list")
     const select = Number(prompt(">"))
 
+
+
+
+    // the function location
     function arrChecker(arr){
         let result = []
         for(const a of arr){
@@ -36,16 +41,28 @@ while(bool == true){
         return result
     }
     function arrMod(n, arr){
-        if(n > arr.length){
-            return error
+        const selected = arr[n-1]
+        if(isNaN(Number(selected[selected.length-1]))){
+            console.log("This item have already been completed")
+            return arr
         }
         else{
-            const selected = arr[n-1]
             const text = selected.slice(0,-1)
-            arr.splice(n,1, text)
+            arr.splice(n-1,1, text)
         }
         return arr
     }
+    function arrLayout(arr){
+        let counter = 0;
+        for(const a of arrChecker(arr)){
+            counter++
+            console.log(`${counter}. ` + a)
+        }
+    }
+    // function ends
+
+
+
     if(select === 1){
         console.log("~Creating a new to-do item~")
         console.log("What is this to-do item called?")
@@ -56,17 +73,25 @@ while(bool == true){
         console.log(temp[(temp.length-1)])
     }
     else if(select === 2){
-        console.log("")
-        let counter = 0;
-        for(const a of arrChecker(arrList)){
-            counter++
-            console.log(`${counter}. ` + a)
+        if(arrList.length>0){
+            console.log("")
+            let counter = 0;
+            for(const a of arrChecker(arrList)){
+                counter++
+                console.log(`${counter}. ` + a)
+            }
+            const option = Number(prompt(">"))
+            if(option > arrList.length){
+                console.log("**select a valid option**")
+            }
+            else{
+                arrList = arrMod(option, arrList)
+            }
+            console.log("")
+            arrLayout(arrList)
         }
-        const option = Number(prompt(">"))
-        
     }
     else{
         console.log("select a valid option")
     }
-    console.log(arrList)
 }
