@@ -86,7 +86,7 @@ while(bool == true){
             arr.splice(n-1,1, text)
         }
         else{
-            console.log("This item is alreay incomplete.")
+            console.log("This item is already incomplete.")
         }
         return arr
         
