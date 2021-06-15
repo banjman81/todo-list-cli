@@ -81,9 +81,14 @@ while(bool == true){
     }
     function unMod(n, arr){
         const selected = arr[n-1]
-        const text = selected+1
+        if(isNaN(Number(selected[selected.length-1]))){
+            const text = selected+1
             arr.splice(n-1,1, text)
-            return arr
+        }
+        else{
+            console.log("This item is alreay incomplete.")
+        }
+        return arr
         
     }
     // function ends
